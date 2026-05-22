@@ -182,16 +182,21 @@ export default function DashboardPage() {
         </button>
       </aside>
 
-      {/* Mobile top bar */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-40 glass-strong border-b border-white/10 safe-top">
+      {/* Mobile top bar — solid dark (matches site navbar) */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-[#0f172a] border-b border-white/10 shadow-lg shadow-black/40 safe-top">
         <div className="flex items-center justify-between px-4 h-14">
-          <Link href="/" className="text-xl font-bold font-[family-name:var(--font-poppins)]">
-            <span className="text-primary">H</span>OUSE
+          <Link href="/" className="flex items-center gap-2 text-xl font-bold font-[family-name:var(--font-poppins)] text-white">
+            <span className="w-9 h-9 rounded-xl neon-btn flex items-center justify-center">
+              <HiHome className="text-white text-lg" />
+            </span>
+            <span>
+              <span className="text-primary">H</span>OUSE
+            </span>
           </Link>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="p-2.5 rounded-xl bg-white/10 text-white border border-white/10"
+            className="p-2.5 rounded-xl bg-white/10 text-white border border-white/20 hover:bg-white/15"
             aria-label="Open menu"
           >
             <HiMenuAlt3 size={22} />
@@ -215,10 +220,10 @@ export default function DashboardPage() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 320, damping: 32 }}
-              className="lg:hidden fixed top-0 right-0 bottom-0 z-50 w-[min(100%,20rem)] glass-strong border-l border-white/10 p-5 flex flex-col"
+              className="lg:hidden fixed top-0 right-0 bottom-0 z-50 w-[min(100%,20rem)] bg-[#111827] border-l border-white/15 shadow-2xl p-5 flex flex-col"
             >
               <div className="flex items-center justify-between mb-6">
-                <span className="font-heading text-lg font-semibold">Menu</span>
+                <span className="font-heading text-lg font-semibold text-white">Menu</span>
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen(false)}
@@ -434,9 +439,9 @@ export default function DashboardPage() {
         </motion.div>
       </main>
 
-      {/* Mobile bottom nav */}
+      {/* Mobile bottom nav — solid dark (matches site navbar) */}
       <nav
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-40 glass-strong border-t border-white/10 safe-bottom"
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0f172a] border-t border-white/10 shadow-[0_-8px_30px_rgba(0,0,0,0.5)] safe-bottom"
         aria-label="Dashboard navigation"
       >
         <div className="grid grid-cols-4 gap-1 px-2 pt-2 pb-2">
@@ -447,12 +452,15 @@ export default function DashboardPage() {
               onClick={() => handleSidebarClick(link)}
               className={`flex flex-col items-center justify-center gap-0.5 py-2 px-1 rounded-xl min-h-[52px] transition-colors ${
                 activeSidebar === link.label
-                  ? "text-primary bg-primary/15"
-                  : "text-white/50 active:bg-white/10"
+                  ? "text-white bg-primary/25 border border-primary/40 shadow-lg shadow-primary/20"
+                  : "text-white/60 active:bg-white/10"
               }`}
             >
-              <link.icon size={22} className="flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs leading-tight text-center">{link.shortLabel}</span>
+              <link.icon
+                size={22}
+                className={`flex-shrink-0 ${activeSidebar === link.label ? "text-primary" : "text-white/70"}`}
+              />
+              <span className="text-[10px] sm:text-xs leading-tight text-center font-medium">{link.shortLabel}</span>
             </button>
           ))}
         </div>
