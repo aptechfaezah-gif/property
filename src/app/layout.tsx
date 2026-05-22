@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Inter, Rajdhani } from "next/font/google";
+import SmoothProviders from "@/components/providers/SmoothProviders";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -40,8 +41,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${rajdhani.variable} ${inter.variable}`}>
-      <body className="min-h-screen antialiased">{children}</body>
+    <html lang="en" className={`${poppins.variable} ${rajdhani.variable} ${inter.variable} scroll-smooth`}>
+      <body className="min-h-screen antialiased">
+        <SmoothProviders>{children}</SmoothProviders>
+      </body>
     </html>
   );
 }

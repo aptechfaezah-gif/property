@@ -63,7 +63,7 @@ function House() {
 }
 
 function Particles() {
-  const count = 200;
+  const count = 80;
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
@@ -95,13 +95,14 @@ export default function HouseScene() {
       <Canvas
         camera={{ position: [0, 2, 6], fov: 50 }}
         style={{ background: "transparent" }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
+        gl={{ antialias: true, powerPreference: "high-performance" }}
       >
         <ambientLight intensity={0.3} />
         <pointLight position={[10, 10, 10]} intensity={1} color="#7C3AED" />
         <pointLight position={[-10, -5, -10]} intensity={0.5} color="#06B6D4" />
         <spotLight position={[0, 10, 0]} angle={0.3} penumbra={1} intensity={1} color="#F43F5E" />
-        <Stars radius={50} depth={50} count={1000} factor={2} saturation={0} fade speed={1} />
+        <Stars radius={50} depth={50} count={400} factor={2} saturation={0} fade speed={0.8} />
         <Particles />
         <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
           <House />

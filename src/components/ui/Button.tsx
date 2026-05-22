@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { springSnappy } from "@/lib/motion";
 import { motion } from "framer-motion";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
@@ -28,14 +29,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <motion.div
-        whileHover={{ scale: disabled || loading ? 1 : 1.02 }}
-        whileTap={{ scale: disabled || loading ? 1 : 0.98 }}
+        whileHover={disabled || loading ? undefined : { scale: 1.02 }}
+        whileTap={disabled || loading ? undefined : { scale: 0.98 }}
+        transition={springSnappy}
         className="inline-flex"
       >
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center gap-2 font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed",
+          "inline-flex items-center justify-center gap-2 font-medium disabled:opacity-50 disabled:cursor-not-allowed",
           variants[variant],
           sizes[size],
           className

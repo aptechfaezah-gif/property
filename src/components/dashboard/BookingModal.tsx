@@ -78,10 +78,10 @@ export default function BookingModal({ open, onClose, onBookingCreated }: Bookin
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 40 }}
             transition={{ type: "spring", stiffness: 300, damping: 28 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 pointer-events-none"
           >
             <div
-              className="glass-strong rounded-2xl w-full max-w-lg p-6 sm:p-8 pointer-events-auto border border-primary/20 shadow-2xl shadow-primary/10"
+              className="glass-strong rounded-t-2xl sm:rounded-2xl w-full max-w-lg max-h-[92dvh] overflow-y-auto p-5 sm:p-8 pointer-events-auto border border-primary/20 shadow-2xl shadow-primary/10 safe-bottom"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6">

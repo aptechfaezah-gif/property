@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { HiLocationMarker, HiStar } from "react-icons/hi";
 import { FaBed, FaBath, FaRulerCombined } from "react-icons/fa";
 import { formatPrice } from "@/lib/utils";
+import { revealTransition } from "@/lib/motion";
 import PropertyContactActions from "./PropertyContactActions";
 import type { Property } from "@/types";
 
@@ -26,15 +27,12 @@ export default function PropertyCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ ...revealTransition, delay: index * 0.08 }}
     >
-      <motion.article
-        whileHover={{ scale: 1.02 }}
-        className="property-card glass rounded-2xl overflow-hidden group animate-border-glow"
-      >
+      <article className="property-card glass rounded-2xl overflow-hidden group">
         <div>
           <Link href={detailHref} className="block relative h-56 overflow-hidden">
             <Image
@@ -90,7 +88,7 @@ export default function PropertyCard({
             </span>
           </div>
         </Link>
-      </motion.article>
+      </article>
     </motion.div>
   );
 }

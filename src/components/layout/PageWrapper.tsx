@@ -10,7 +10,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     <div className="min-h-screen gradient-bg flex flex-col relative">
       <AnimatedBackground />
       <Navbar />
-      <main className="flex-1 pt-20 relative z-10">
+      <main className="flex-1 pt-20 relative z-10 scroll-smooth">
         <PageTransition>{children}</PageTransition>
       </main>
       <div className="relative z-10">

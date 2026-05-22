@@ -43,7 +43,7 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
         isOpen || scrolled
           ? "bg-[#0f172a] border-b border-white/10 shadow-lg shadow-black/40 py-3"
           : "py-5 bg-transparent"
